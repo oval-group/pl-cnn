@@ -9,7 +9,8 @@ def center_data(X_train, X_val, X_test,
 
     if offset is None:
         if mode == "per channel":
-            offset = np.mean(X_train, axis=(0, 2, 3))
+            n_channels = np.shape(X_train)[1]
+            offset = np.mean(X_train, axis=(0, 2, 3)).reshape(1, n_channels, 1, 1)
         elif mode == "per pixel":
             offset = np.mean(X_train, 0)
         else:
@@ -28,7 +29,8 @@ def normalize_data(X_train, X_val, X_test,
 
     if scale is None:
         if mode == "per channel":
-            scale = np.std(X_train, axis=(0, 2, 3))
+            n_channels = np.shape(X_train)[1]
+            scale = np.std(X_train, axis=(0, 2, 3)).reshape(1, n_channels, 1, 1)
         elif mode == "per pixel":
             scale = np.std(X_train, 0)
         elif mode == "fixed value":

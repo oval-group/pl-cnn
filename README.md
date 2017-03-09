@@ -3,16 +3,7 @@ An optimization algorithm for learning Piecewise Linear Convolutional Neural Net
 This is the implementation of the paper [Trusting SVM for Piecewise Linear CNNs](https://arxiv.org/abs/1611.02185) by Leonard Berrada, Andrew Zisserman and M. Pawan Kumar.
 
 # Requirements
-This code has been developped python 2.7 and requires the following packages:
-* numpy
-* scipy
-* tqdm
-* Theano
-* Lasagne
-* maplotlib
-* seaborn
-* cPickle
-* fuel (for ImageNet)
+This code has been developped python 2.7 and requires the packages given in `requirements.txt`. Note that you might need to install the dev version of Lasagne and Theano.
 
 # Repository organization
 
@@ -61,6 +52,10 @@ When training is complete, launch data pipeline for validation set:
 
 And launch evaluation in a different shell:
 `python extract.py --imagenet --weights_file imagenet_lwsvm_15`
+
+# To re-use code
+
+The architectures can easily be changed through the `addLayer`-type methods of `NeuralNet`. Note that the code assumes a restricted search on the conditional gradient of convolutional layers (Observation 1 in section 4 of the [paper](https://arxiv.org/abs/1611.02185)), since they are usually followed by an important number of non-linearities (max-pooling).
 
 
 
