@@ -19,7 +19,9 @@ def dump_weights(nnet, filename=None):
             weight_dict[layer.name + "_mean"] = layer.mean.get_value()
             weight_dict[layer.name + "_inv_std"] = layer.inv_std.get_value()
 
-    pickle.dump(weight_dict, open(filename, "wb"))
+    with open(filename, 'wb') as f:
+        pickle.dump(weight_dict, f)
+
     print("Parameters saved in %s" % filename)
 
 
@@ -28,7 +30,8 @@ def load_weights(nnet, filename=None):
     if filename is None:
         filename = nnet.pickle_filename
 
-    weight_dict = pickle.load(open(filename, "rb"))
+    with open(filename, 'rb') as f:
+        weight_dict = pickle.load(f)
 
     for layer in nnet.trainable_layers:
         layer.W.set_value(weight_dict[layer.name + "_w"])
