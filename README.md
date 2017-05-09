@@ -3,7 +3,7 @@ An optimization algorithm for learning Piecewise Linear Convolutional Neural Net
 This is the implementation of the paper [Trusting SVM for Piecewise Linear CNNs](https://arxiv.org/abs/1611.02185) by Leonard Berrada, Andrew Zisserman and M. Pawan Kumar.
 
 # Requirements
-This code has been developped python 2.7 and requires the packages given in `requirements.txt`. Note that you might need to install the dev version of Lasagne and Theano.
+This code has been developped python 2.7 and requires the packages given in `requirements.txt`.
 
 # Repository organization
 
